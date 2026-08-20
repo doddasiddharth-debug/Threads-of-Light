@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awareness Calendar · Threads of Light</title>
+<meta name="description" content="The medical issue we focus on each month, aligned with the national health awareness calendar.">
+<link rel="icon" type="image/png" href="assets/images/logo.png">
+<link rel="apple-touch-icon" href="assets/images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"><img src="assets/images/logo.png" alt=""></span>
+      Threads of Light
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="stories.html">Stories</a></li>
+      <li><a href="calendar.html">Awareness Calendar</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="nav-only-mobile"><a href="share-your-story.html">Share your story</a></li>
+      <li class="nav-only-mobile"><a href="get-involved.html">Join us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="get-involved.html" class="btn btn-outline btn-sm">Join us</a>
+      <a href="share-your-story.html" class="btn btn-accent btn-sm">Share your story</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container container-narrow">
+      <p class="eyebrow">Awareness calendar</p>
+      <h1>Twelve months, twelve conversations</h1>
+      <p class="lede">Our campaign schedule follows the recognised national health awareness months, so our stories land while the wider conversation is already happening. The current month is highlighted.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <!-- Cards are rendered from AWARENESS_MONTHS in assets/js/main.js.
+           Edit that list to change a month's focus, and both this page and
+           the homepage spotlight update together. -->
+      <div class="month-grid" data-calendar>
+        <noscript>
+          <p>Enable JavaScript to see the full awareness calendar, or <a href="contact.html">contact us</a> for the schedule.</p>
+        </noscript>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow no-rule">Using the calendar</p>
+        <h2>Three ways to work with a month</h2>
+      </div>
+      <div class="grid cols-3">
+        <article class="card card-hover reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 5.5h16M4 12h16M4 18.5h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Plan ahead</h3>
+          <p>Know which month covers your condition and submit early. We start collecting stories roughly six weeks before a campaign goes live.</p>
+        </article>
+        <article class="card card-hover reveal">
+          <div class="card-icon sage" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5 12.5v6a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M12 3.5v11M8 7.5l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Amplify it</h3>
+          <p>Share the month's stories with your school, club, or family. Awareness only counts once it leaves the page.</p>
+        </article>
+        <article class="card card-hover reveal">
+          <div class="card-icon sky" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 16.4v-4.6M12 8.4v.9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Suggest a change</h3>
+          <p>If a condition matters to your community and we have missed it, tell us. The calendar is a starting point, not a fixed rule.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container container-narrow">
+      <div class="notice">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M12 11v5.5M12 7.6v.9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+        </svg>
+        <p><strong>Check before you publish.</strong> Awareness months vary by country and are occasionally reassigned by the organizations that run them. Verify each month against a current source, and adjust the list in <code>assets/js/main.js</code>, before the campaign goes out.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" style="padding: 72px 0 92px;">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>See a month that belongs to you?</h2>
+        <p>Tell us your story and we will place it in that month's campaign, with your name or without it, whichever you prefer.</p>
+        <div class="cta-actions">
+          <a href="share-your-story.html" class="btn btn-accent">Share your story</a>
+          <a href="stories.html" class="btn btn-light">Read past campaigns</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/images/logo.png" alt=""></span>
+          Threads of Light
+        </a>
+        <p class="footer-blurb">A youth-led nonprofit raising awareness of a different medical issue every month, through the stories of the people living it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="calendar.html">Awareness calendar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Take part</h4>
+        <ul>
+          <li><a href="share-your-story.html">Share your story</a></li>
+          <li><a href="get-involved.html">Volunteer</a></li>
+          <li><a href="get-involved.html#chapters">Start a chapter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="mailto:hello@threadsoflight.org">hello@threadsoflight.org</a></li>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> Threads of Light. All rights reserved.</p>
+      <p>Stories are shared with permission. Nothing here is medical advice.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

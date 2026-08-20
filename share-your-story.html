@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Your Story · Threads of Light</title>
+<meta name="description" content="Tell your story your way: named, pseudonymous, or anonymous. You approve every word before we publish.">
+<link rel="icon" type="image/png" href="assets/images/logo.png">
+<link rel="apple-touch-icon" href="assets/images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"><img src="assets/images/logo.png" alt=""></span>
+      Threads of Light
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="stories.html">Stories</a></li>
+      <li><a href="calendar.html">Awareness Calendar</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="nav-only-mobile"><a href="share-your-story.html">Share your story</a></li>
+      <li class="nav-only-mobile"><a href="get-involved.html">Join us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="get-involved.html" class="btn btn-outline btn-sm">Join us</a>
+      <a href="share-your-story.html" class="btn btn-accent btn-sm">Share your story</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container container-narrow">
+      <p class="eyebrow">Share your story</p>
+      <h1>You decide what gets told, and how much of it</h1>
+      <p class="lede">There is no right way to have been ill, and no right way to write about it. Send us a paragraph or ten pages, a voice note or a phone call. We will help with the rest.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="grid cols-2" style="gap: 48px; align-items: start;">
+
+        <div>
+          <h2>How it works</h2>
+          <div class="steps" style="margin-top: 26px;">
+            <div class="step">
+              <div class="step-num" aria-hidden="true"></div>
+              <div>
+                <h3>You reach out</h3>
+                <p>Fill in the form, or just email us. Tell us as little as you like at this stage, a sentence is enough to start.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num" aria-hidden="true"></div>
+              <div>
+                <h3>We talk it through</h3>
+                <p>A student editor replies within about a week. You can write it yourself, or we can interview you and write the first draft for you.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num" aria-hidden="true"></div>
+              <div>
+                <h3>You approve every word</h3>
+                <p>Nothing is published until you have read the final version and confirmed in writing that you are happy with it.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num" aria-hidden="true"></div>
+              <div>
+                <h3>It goes live in its month</h3>
+                <p>Your story runs during the campaign for that condition, alongside facts and resources. You can ask for it to be removed at any point afterwards.</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 style="margin-top: 44px;">Good to know</h2>
+          <ul class="check-list" style="margin-top: 18px;">
+            <li>You can be named, use a first name only, use a pseudonym, or stay fully anonymous.</li>
+            <li>You do not have to be a good writer. That is the editor's job, not yours.</li>
+            <li>You can stop at any stage, including after publication.</li>
+            <li>We do not publish other people's medical details, so please write about your own experience, or get their permission first.</li>
+            <li>We are students, not doctors. Stories are personal experience, not medical advice.</li>
+          </ul>
+        </div>
+
+        <div class="form-card reveal">
+          <h2 style="font-size: 1.4rem;">Start a submission</h2>
+          <p style="font-size: 15px;">Everything here stays between you and our editorial team.</p>
+
+          <!-- This form needs a backend to actually send. Easiest option for a
+               static site: create a free form endpoint (Formspree, Getform, or
+               a Google Form) and paste its URL into the action below. -->
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="First name is fine" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="topic">What is your story about?</label>
+              <input type="text" id="topic" name="topic" placeholder="e.g. type 1 diabetes, caring for a parent with dementia" required>
+            </div>
+            <div class="field">
+              <label for="identity">How would you like to be credited?</label>
+              <select id="identity" name="identity">
+                <option>Full name</option>
+                <option>First name only</option>
+                <option>Pseudonym</option>
+                <option>Anonymous</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="story">Tell us as much or as little as you want</label>
+              <textarea id="story" name="story" placeholder="A few sentences is a perfectly good start."></textarea>
+              <p class="hint">Prefer to talk instead of write? Say so here and we will set up a call.</p>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input type="checkbox" name="consent" required>
+                <span>I understand that nothing will be published until I have read and approved the final version.</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-accent btn-block">Send submission</button>
+            <p class="hint" style="text-align: center; margin-top: 14px;">Or email us directly at <a href="mailto:stories@threadsoflight.org" style="color: var(--accent-dark); font-weight: 600;">stories@threadsoflight.org</a></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <div class="section-head center">
+        <p class="eyebrow no-rule">Questions people ask</p>
+        <h2>Before you send</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Do I have to use my real name?</summary>
+          <p>No. You can publish under a pseudonym or completely anonymously, and that decision is yours to change right up until the piece goes live.</p>
+        </details>
+        <details>
+          <summary>What if my condition is not on the calendar?</summary>
+          <p>Send it anyway. The calendar sets our main campaigns, but we publish stories outside it too, and a submission is often what makes us add a month.</p>
+        </details>
+        <details>
+          <summary>Can I write about someone I lost?</summary>
+          <p>Yes, and many people do. We will ask that you are comfortable with the details being public, and we will handle the draft gently.</p>
+        </details>
+        <details>
+          <summary>Will you edit what I wrote?</summary>
+          <p>We edit for clarity, length, and typos. We do not change the meaning of your experience, and you see and approve every edit before publication.</p>
+        </details>
+        <details>
+          <summary>Can I take my story down later?</summary>
+          <p>At any time, for any reason, without explaining yourself. Email us and it comes down.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/images/logo.png" alt=""></span>
+          Threads of Light
+        </a>
+        <p class="footer-blurb">A youth-led nonprofit raising awareness of a different medical issue every month, through the stories of the people living it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="calendar.html">Awareness calendar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Take part</h4>
+        <ul>
+          <li><a href="share-your-story.html">Share your story</a></li>
+          <li><a href="get-involved.html">Volunteer</a></li>
+          <li><a href="get-involved.html#chapters">Start a chapter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="mailto:hello@threadsoflight.org">hello@threadsoflight.org</a></li>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> Threads of Light. All rights reserved.</p>
+      <p>Stories are shared with permission. Nothing here is medical advice.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

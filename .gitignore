@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Local Claude Code dev-server config
+.claude/
