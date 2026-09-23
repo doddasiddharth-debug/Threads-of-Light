@@ -1,4 +1,4 @@
-// Threads of Light: shared behavior
+// Strands of Life: shared behavior
 
 // The awareness focus for each month. Edit here and both the homepage
 // spotlight and the calendar page stay in sync, the calendar cards read
@@ -135,6 +135,59 @@ document.addEventListener("DOMContentLoaded", () => {
     set("[data-spotlight-month]", data.month + " focus");
     set("[data-spotlight-focus]", data.focus);
     set("[data-spotlight-blurb]", data.blurb);
+  }
+
+  // Homepage strip: the twelve focuses in one scrolling row, from the same
+  // list. The set is cloned twice so the CSS can shift the track by exactly
+  // one set and the seam never shows; the clones are aria-hidden so a screen
+  // reader hears the year once. Until this runs the names wrap as a plain row.
+  const monthMarquee = document.querySelector("[data-month-marquee]");
+  if (monthMarquee) {
+    const track = monthMarquee.querySelector("[data-marquee-track]");
+    const item = (data) => {
+      const li = document.createElement("li");
+      const b = document.createElement("b");
+      b.textContent = data.month.slice(0, 3);
+      li.appendChild(b);
+      li.appendChild(document.createTextNode(data.focus));
+      return li;
+    };
+    AWARENESS_MONTHS.forEach((data) => track.appendChild(item(data)));
+    const originals = Array.from(track.children);
+    const COPIES = 3;
+    for (let copy = 1; copy < COPIES; copy++) {
+      originals.forEach((li) => {
+        const clone = li.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
+      });
+    }
+    // Pace by width, so a longer list scrolls for longer rather than faster.
+    const PX_PER_SECOND = 44;
+    const setSpeed = () => {
+      const setWidth = track.scrollWidth / COPIES;
+      if (setWidth > 0) track.style.animationDuration = setWidth / PX_PER_SECOND + "s";
+    };
+    setSpeed();
+    window.addEventListener("resize", setSpeed);
+    monthMarquee.classList.add("is-live");
+
+    // Autoplay with no way to stop it fails WCAG 2.2.2, and hover-to-pause
+    // does nothing for a keyboard, so the button is the real control.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let userPaused = reduceMotion.matches;
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "marquee-pause";
+    const syncToggle = () => {
+      toggle.textContent = userPaused ? "\u25B6" : "\u275A\u275A";
+      toggle.setAttribute("aria-label", (userPaused ? "Play" : "Pause") + " the awareness months strip");
+      monthMarquee.classList.toggle("is-paused", userPaused);
+    };
+    toggle.addEventListener("click", () => { userPaused = !userPaused; syncToggle(); });
+    syncToggle();
+    monthMarquee.appendChild(toggle);
+    reduceMotion.addEventListener("change", (e) => { userPaused = e.matches; syncToggle(); });
   }
 
   // Calendar page: render the twelve month cards from the same list.

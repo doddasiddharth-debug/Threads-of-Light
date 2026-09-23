@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Threads of Light · Health awareness through storytelling</title>
-<meta name="description" content="Threads of Light is a youth-led nonprofit that raises awareness of a different medical issue every month through the stories of the people living it.">
+<title>Strands of Life · Health awareness through storytelling</title>
+<meta name="description" content="Strands of Life is a youth-led nonprofit that raises awareness of a different medical issue every month through the stories of the people living it.">
 <link rel="icon" type="image/png" href="assets/images/logo.png">
 <link rel="apple-touch-icon" href="assets/images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#3434AA">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="brand">
       <span class="brand-mark" aria-hidden="true"><img src="assets/images/logo.png" alt=""></span>
-      Threads of Light
+      Strands of Life
     </a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
@@ -30,27 +33,27 @@
       <li class="nav-only-mobile"><a href="get-involved.html">Join us</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="get-involved.html" class="btn btn-outline btn-sm">Join us</a>
-      <a href="share-your-story.html" class="btn btn-accent btn-sm">Share your story</a>
+      <a href="share-your-story.html" class="btn btn-sm">Share your story</a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </nav>
 </header>
 
-<main>
+<main id="main-content">
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO: an indigo band. There is no photography yet, so the mark itself,
+       huge and faint, is the picture. -->
+  <section class="hero-banner">
+    <div class="hero-mark" aria-hidden="true"><img src="assets/images/logo.png" width="701" height="700" alt=""></div>
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Youth-led nonprofit</p>
-        <h1>Every month, a different diagnosis. Every story, a person behind it.</h1>
-        <p class="lede">Threads of Light is run by students who believe health awareness works best when it sounds like a person, not a pamphlet. Each month we choose one medical issue and publish the stories of people living with it.</p>
+        <h1>Every month, a different diagnosis. Every story, <em>a person behind it.</em></h1>
+        <p class="lede">Strands of Life is run by students who believe health awareness works best when it sounds like a person, not a pamphlet. Each month we choose one medical issue and publish the stories of people living with it.</p>
         <div class="hero-actions">
-          <a href="stories.html" class="btn btn-primary">Read the stories</a>
+          <a href="stories.html" class="btn btn-on-image">Read the stories</a>
           <a href="share-your-story.html" class="btn btn-outline">Share your story</a>
         </div>
-        <p class="hero-note">Free to read, free to share. Every story is published with the storyteller's permission.</p>
       </div>
 
       <aside class="spotlight reveal" data-spotlight>
@@ -67,37 +70,22 @@
         <a href="calendar.html" class="link-arrow">See the full year</a>
       </aside>
     </div>
+    <p class="hero-fineprint">Free to read, free to share. Every story is published with the storyteller's permission.</p>
   </section>
 
-  <!-- STATS -->
-  <section class="section-tight">
-    <div class="container">
-      <div class="stat-strip cols-3 reveal">
-        <div class="stat-cell">
-          <div class="stat-num">12</div>
-          <div class="stat-label">Awareness campaigns a year, one every month</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Student-run, from writing to design to outreach</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">Free</div>
-          <div class="stat-label">Every story and resource, no paywall, no ads</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- THE YEAR: one scrolling row of the twelve focuses, from AWARENESS_MONTHS -->
+  <div class="month-marquee" data-month-marquee aria-label="The twelve awareness months">
+    <ul class="marquee-track" data-marquee-track></ul>
+  </div>
 
   <!-- WHAT WE DO -->
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">What we do</p>
-        <h2>Awareness that people actually finish reading</h2>
-        <p>Statistics tell you a condition exists. A story tells you what it costs, what helped, and what you would want a friend to know. We build the second kind of awareness.</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Awareness that people actually finish reading.</h2>
+        <p class="lede">Statistics tell you a condition exists. A story tells you what it costs, what helped, and what you would want a friend to know. We build the second kind of awareness.</p>
       </div>
-
       <div class="grid cols-3">
         <article class="card card-hover reveal">
           <div class="card-icon" aria-hidden="true">
@@ -134,8 +122,40 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section section-alt">
+  <!-- WHY: the one line the whole organisation rests on, in the serif -->
+  <section class="section-tight section-alt">
+    <div class="container">
+      <figure class="pullquote reveal">
+        <blockquote>
+          <p>“Health awareness works best when it sounds like a person, not a pamphlet.”</p>
+        </blockquote>
+        <figcaption><strong>Why we exist</strong>The idea behind every campaign we run.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- NUMBERS: three indigo tiles, gold figures. Add an <img> as the first
+       child of a tile to put a photograph under it. -->
+  <section class="stat-mosaic" aria-label="Strands of Life in numbers">
+    <div class="stat-tile plum">
+      <span class="tile-mark" aria-hidden="true"></span>
+      <div class="stat-num">12</div>
+      <p class="stat-label">awareness campaigns a year, one every month</p>
+    </div>
+    <div class="stat-tile sky">
+      <span class="tile-mark" aria-hidden="true"></span>
+      <div class="stat-num">100%</div>
+      <p class="stat-label">student-run, from writing to design to outreach</p>
+    </div>
+    <div class="stat-tile rose">
+      <span class="tile-mark" aria-hidden="true"></span>
+      <div class="stat-num">Free</div>
+      <p class="stat-label">every story and resource — no paywall, no ads</p>
+    </div>
+  </section>
+
+  <!-- HOW A MONTH COMES TOGETHER -->
+  <section class="section">
     <div class="container split">
       <div>
         <p class="eyebrow">How a month comes together</p>
@@ -178,14 +198,13 @@
   </section>
 
   <!-- FEATURED STORIES -->
-  <section class="section">
+  <section class="section section-alt">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">From the archive</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">From the archive</span>
         <h2>Recent stories</h2>
-        <p>A few pieces from past campaigns. Read the full archive, or add your own.</p>
+        <p class="lede">A few pieces from past campaigns. Read the full archive, or add your own.</p>
       </div>
-
       <!-- Replace these three cards with real published stories. -->
       <div class="notice reveal" style="margin-bottom: 26px;">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,16 +265,29 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-tight" style="padding-bottom: 92px;">
+  <!-- ACT: three ways in, laid out like a hand of cards -->
+  <section class="section action-section">
     <div class="container">
-      <div class="cta-band reveal">
-        <h2>Your story could be the one someone needed to read</h2>
-        <p>You do not need to be a writer, and you do not need a dramatic ending. If you have lived with a diagnosis, cared for someone who has, or lost someone to one, we would be honoured to help you tell it.</p>
-        <div class="cta-actions">
-          <a href="share-your-story.html" class="btn btn-accent">Share your story</a>
-          <a href="get-involved.html" class="btn btn-light">Join the team</a>
-        </div>
+      <div class="section-head center reveal">
+        <h2>Your story could be the one <em>someone needed to read.</em></h2>
+        <p class="lede">You do not need to be a writer, and you do not need a dramatic ending.</p>
+      </div>
+      <div class="action-cards reveal">
+        <a class="action-card rose" href="share-your-story.html">
+          <span class="tile-mark" aria-hidden="true"></span>
+          <span class="action-card-word">share</span>
+          <span class="action-card-text">If you have lived with a diagnosis, cared for someone who has, or lost someone to one.<span>Share your story →</span></span>
+        </a>
+        <a class="action-card sky" href="get-involved.html">
+          <span class="tile-mark" aria-hidden="true"></span>
+          <span class="action-card-word">volunteer</span>
+          <span class="action-card-text">Writing, design, outreach, research. No experience needed and every role counts for service hours.<span>Join the team →</span></span>
+        </a>
+        <a class="action-card sage" href="get-involved.html#chapters">
+          <span class="tile-mark" aria-hidden="true"></span>
+          <span class="action-card-word">chapter</span>
+          <span class="action-card-text">Run the monthly campaign at your own school, with our materials and a monthly call.<span>Start a chapter →</span></span>
+        </a>
       </div>
     </div>
   </section>
@@ -268,7 +300,7 @@
       <div>
         <a href="index.html" class="brand">
           <span class="brand-mark" aria-hidden="true"><img src="assets/images/logo.png" alt=""></span>
-          Threads of Light
+          Strands of Life
         </a>
         <p class="footer-blurb">A youth-led nonprofit raising awareness of a different medical issue every month, through the stories of the people living it.</p>
       </div>
@@ -292,18 +324,18 @@
         <h4>Connect</h4>
         <ul>
           <li><a href="contact.html">Contact us</a></li>
-          <li><a href="mailto:hello@threadsoflight.org">hello@threadsoflight.org</a></li>
+          <li><a href="mailto:hello@strandsoflife.org">hello@strandsoflife.org</a></li>
           <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <span data-year>2026</span> Threads of Light. All rights reserved.</p>
+      <p>&copy; <span data-year>2026</span> Strands of Life. All rights reserved.</p>
       <p>Stories are shared with permission. Nothing here is medical advice.</p>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
