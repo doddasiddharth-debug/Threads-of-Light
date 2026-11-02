@@ -116,10 +116,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // The About submenu. CSS opens it on hover and focus-within; this adds tap
+  // and click toggling, Escape to close, and closing when focus or the
+  // pointer leaves. Same behaviour as the ABLE Initiatives nav.
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+  document.querySelectorAll(".has-submenu").forEach((item) => {
+    const parent = item.querySelector(".nav-parent");
+    if (!parent) return;
+    const setOpen = (open) => {
+      item.classList.toggle("is-open", open);
+      parent.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    parent.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(!item.classList.contains("is-open"));
+    });
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && item.classList.contains("is-open")) {
+        setOpen(false);
+        parent.focus();
+      }
+    });
+    item.addEventListener("mouseenter", () => parent.setAttribute("aria-expanded", "true"));
+    item.addEventListener("mouseleave", () => {
+      if (canHover.matches) setOpen(false);
+      else if (!item.classList.contains("is-open")) parent.setAttribute("aria-expanded", "false");
+    });
+    document.addEventListener("click", (e) => {
+      if (!item.contains(e.target)) setOpen(false);
+    });
+    item.addEventListener("focusout", (e) => {
+      if (!item.contains(e.relatedTarget)) setOpen(false);
+    });
+  });
+
   // Mark the nav link matching the current page.
   const page = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((link) => {
-    if (link.getAttribute("href") === page) link.classList.add("is-active");
+    if (link.getAttribute("href") !== page) return;
+    if (link.closest(".submenu")) {
+      // A child page: mark it in the menu and underline the parent instead.
+      link.setAttribute("aria-current", "page");
+      link.closest(".has-submenu").classList.add("is-current");
+    } else {
+      link.classList.add("is-active");
+    }
   });
 
   const currentMonth = new Date().getMonth();
