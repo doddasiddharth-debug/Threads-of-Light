@@ -482,7 +482,7 @@ a { color: inherit; text-decoration: none; }
   .action-card:nth-child(1) { transform: rotate(-2deg); }
   .action-card:nth-child(3) { transform: rotate(2deg); }
 }
-@media (max-width: 820px) {
+@media (max-width: 1080px) {
   .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; margin: 0; padding: 8px 20px 16px; background: var(--brand-deep); border-top: 1px solid rgba(255, 255, 255, 0.18); box-shadow: var(--shadow-md); }
   .nav-open .nav-links { display: flex; }
   .nav { position: relative; }
@@ -505,4 +505,80 @@ a { color: inherit; text-decoration: none; }
   .nav { padding: 14px 18px; }
   .brand { font-size: 18px; }
   .brand-mark { width: 48px; height: 48px; }
+}
+
+/* ---------- Team page ---------- */
+/* Same layout as the ABLE Initiatives team page: a ruled heading per group,
+   then a grid of square headshots with name and role underneath. Members
+   without a headshot get their initials on a month tone; dropping an <img>
+   into the .avatar replaces them with no other change. */
+.team-section-title { display: flex; align-items: center; gap: 16px; margin: 0 0 26px; font-size: 26px; font-weight: 600; line-height: 1.2; }
+.team-section-title::before { content: ""; flex: none; width: 28px; height: 4px; border-radius: 2px; background: var(--gold); }
+.team-section-title::after { content: ""; flex: 1; height: 1px; background: var(--line-strong); }
+.team-grid + .team-section-title { margin-top: 72px; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team-card { margin: 0; }
+.avatar { position: relative; aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; background: var(--accent-tint); color: var(--accent-dark); display: grid; place-items: center; margin-bottom: 14px; font-family: var(--font-display); font-size: 34px; font-weight: 600; letter-spacing: 0.04em; }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.avatar-initials.rose { background: var(--rose-tint); color: var(--rose-ink); }
+.avatar-initials.sage { background: var(--sage-tint); color: var(--sage-ink); }
+.avatar-initials.sky { background: var(--sky-tint); color: var(--sky-ink); }
+.avatar-initials.plum { background: var(--plum-tint); color: var(--plum-ink); }
+.team-name { font-size: 18px; font-weight: 700; margin: 0 0 2px; }
+.team-role { font-size: 14.5px; color: var(--accent-dark); margin: 0; }
+@media (max-width: 900px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .team-section-title { font-size: 21px; gap: 12px; }
+  .team-section-title::before { width: 20px; }
+}
+
+/* Donate sits beside "Share your story" in the nav as the one filled pill, so
+   the two read as different actions. */
+.nav-actions .btn-donate { background: #fff; color: var(--brand); }
+.nav-actions .btn-donate:hover { background: var(--gold); border-color: var(--gold); color: var(--brand-darkest); }
+/* The Team link and Donate button made the nav one item longer; keep every
+   label on one line and tighten the spacing before the mobile menu takes over. */
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1240px) and (min-width: 1081px) {
+  .nav-links { gap: 18px; }
+  .nav-actions { gap: 8px; }
+  .nav-actions .btn-sm { padding: 9px 15px; }
+}
+
+/* ---------- Timeline page ---------- */
+/* One spine, a month label wherever the month changes, and a card per entry
+   in date order, oldest first, with the newest flagged "Latest". */
+.tl { list-style: none; position: relative; max-width: 820px; margin: 0 auto; padding: 0; }
+.tl::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: var(--line-strong); }
+.tl-month { position: relative; padding-left: 44px; margin: 0 0 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); }
+.tl-month::before { content: ""; position: absolute; left: 4px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--brand); }
+.tl-entry { position: relative; padding-left: 44px; margin-bottom: 24px; }
+.tl-entry::before { content: ""; position: absolute; left: 5px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--brand); }
+.tl-entry.is-latest::before { background: var(--gold); border-color: var(--gold); }
+.tl-card { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 28px; }
+.tl-entry.is-latest .tl-card { border-color: var(--brand); box-shadow: var(--shadow-md); }
+.tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 12px; }
+.tl-meta time { font-size: 14px; color: var(--muted); }
+.tl-card h3 { font-size: 21px; margin-bottom: 6px; }
+.tl-card p { font-size: 16px; margin: 0; }
+.tl-flag { position: absolute; top: -12px; right: 22px; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--gold); color: var(--brand-darkest); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+@media (max-width: 600px) { .tl-card { padding: 22px 20px; } .tl-card h3 { font-size: 19px; } }
+
+/* ---------- Recently at Strands of Life (homepage) ---------- */
+/* The ABLE Initiatives homepage strip: a heading block, then the latest three
+   timeline entries split by hairlines, on the darkest indigo. */
+.latest-band { background: var(--brand-darkest); color: #fff; padding: clamp(56px, 7vw, 88px) 0; }
+.latest { display: grid; grid-template-columns: minmax(220px, 1fr) 3fr; gap: 40px; align-items: start; }
+.latest-head .eyebrow, .latest-card .eyebrow { color: var(--gold); }
+.latest-head h2 { color: #fff; font-size: clamp(28px, 3vw, 36px); margin: 10px 0 22px; }
+.latest-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+.latest-card { display: block; padding: 4px 28px; border-left: 1px solid rgba(255, 255, 255, 0.22); color: #fff; text-decoration: none; }
+.latest-card h3 { color: #fff; font-size: 20px; line-height: 1.25; margin: 10px 0 14px; transition: color 0.16s ease; }
+.latest-card:hover h3 { color: var(--gold); }
+.latest-card time { font-size: 14px; color: rgba(255, 255, 255, 0.72); }
+@media (max-width: 900px) {
+  .latest { grid-template-columns: 1fr; gap: 28px; }
+  .latest-strip { grid-template-columns: 1fr; gap: 26px; }
+  .latest-card { padding: 2px 0 2px 22px; }
 }

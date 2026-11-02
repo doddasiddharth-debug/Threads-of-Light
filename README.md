@@ -10,8 +10,10 @@ deploys to GitHub Pages as-is.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Home: mission, the current month's spotlight, featured stories |
+| `index.html` | Home: mission, the current month's spotlight, "Recently at Strands of Life" |
 | `about.html` | Who we are, our values, and how stories are handled |
+| `team.html` | The team: co-founders, leadership, editorial |
+| `timeline.html` | Everything the club has done, oldest first; the newest entry is flagged Latest |
 | `stories.html` | Story archive with category filters |
 | `calendar.html` | The twelve-month awareness calendar |
 | `share-your-story.html` | Submission process, form, and FAQ |
@@ -103,28 +105,34 @@ python3 -m http.server 4173
 
 Then open <http://localhost:4173>. Any static file server works.
 
-## Before you launch
+## Still to fill in
 
-The site ships with placeholder content so the layout is visible. Replace it:
+The sample stories, sample team and setup notices have been taken off the
+site. What is left:
 
-1. **Stories** — swap the example cards in `stories.html` and `index.html` for
-   real published submissions, then delete the yellow "Placeholder content"
-   notices. Keep each card's `data-tag` matching one of the filter buttons.
-2. **Team** — put real names, roles, and photos into `about.html`.
-3. **Email addresses** — `hello@strandsoflife.org` and
-   `stories@strandsoflife.org` appear across the site. Find and replace them
-   with your real inboxes.
-4. **Social links** — the Instagram links point at `instagram.com`. Update them
-   in the footer (every page) and in `contact.html`.
-   The logo files are ~330KB / ~255KB. If page weight matters, run them through an
-   image compressor or export a small `logo-32.png` for the favicon.
-5. **Forms** — the forms on `share-your-story.html` and `contact.html` post to
-   `https://formspree.io/f/your-form-id`. A static site cannot send mail on its
-   own, so create a free endpoint (Formspree, Getform, or a Google Form) and
+1. **Email addresses.** `hello@strandsoflife.org` and `stories@strandsoflife.org`
+   appear across the site. Replace them with real inboxes.
+2. **Forms.** The forms on `share-your-story.html` and `contact.html` post to
+   `https://formspree.io/f/your-form-id`, which does not exist, so submissions
+   are lost. Create a free endpoint (Formspree, Getform, or a Google Form) and
    paste the URL into each `action`.
-6. **Awareness months** — verify each month against a current source before
-   campaigning on it. Awareness months differ by country and are occasionally
-   reassigned.
+3. **Instagram.** The links were removed because they went to instagram.com
+   itself. Add the real handle to the footer (every page) and `contact.html`.
+4. **Stories.** `stories.html` says the first stories are on their way. Add
+   story cards (`.story-card` in a `.story-grid`, with a `data-tag` matching a
+   filter button) once a storyteller approves one.
+5. **Team headshots.** Only Siddharth has one. Add an `<img>` inside the
+   member's `.avatar` in `team.html` and the initials give way to it.
+6. **Awareness months.** Verify each month against a current source before
+   campaigning on it.
+
+## Adding to the timeline
+
+Add an `<li class="tl-entry">` to `timeline.html` in date order, move the
+`is-latest` class and the "Latest" flag onto it, and start a new
+`<li class="tl-month">` when the month changes. Then add the same event as
+the first card in the homepage's "Recently at Strands of Life" strip and drop
+the last card, so it always shows the newest three.
 
 ## Editing the awareness calendar
 
