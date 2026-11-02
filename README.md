@@ -134,6 +134,10 @@ Add an `<li class="tl-entry">` to `timeline.html` in date order, move the
 the first card in the homepage's "Recently at Strands of Life" strip and drop
 the last card, so it always shows the newest three.
 
+Photos for an entry go in `assets/images/timeline/<event>/`, 1280px on the
+long side. The first is an `<img class="tl-photo">` at the top of the card;
+any others go in a `.tl-thumbs` row under the text and open full size.
+
 ## Editing the awareness calendar
 
 The twelve months are defined once, in the `AWARENESS_MONTHS` array at the top

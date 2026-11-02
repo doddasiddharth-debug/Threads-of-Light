@@ -582,3 +582,15 @@ a { color: inherit; text-decoration: none; }
   .latest-strip { grid-template-columns: 1fr; gap: 26px; }
   .latest-card { padding: 2px 0 2px 22px; }
 }
+/* An entry with photos: the lead photo runs edge to edge across the top of the
+   card, and any others sit underneath as a row of thumbnails that open full
+   size. */
+.tl-photo { display: block; width: calc(100% + 56px); max-width: none; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 30%; margin: -24px -28px 20px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.tl-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
+.tl-thumbs a { display: block; border-radius: var(--radius-sm); overflow: hidden; }
+.tl-thumbs img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.3s ease; }
+.tl-thumbs a:hover img { transform: scale(1.04); }
+@media (max-width: 600px) {
+  .tl-photo { width: calc(100% + 40px); margin: -22px -20px 18px; }
+  .tl-thumbs { grid-template-columns: repeat(2, 1fr); }
+}
