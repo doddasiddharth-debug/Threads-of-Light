@@ -128,15 +128,16 @@ site. What is left:
 
 ## Adding to the timeline
 
-Add an `<li class="tl-entry">` to `timeline.html` in date order, move the
-`is-latest` class and the "Latest" flag onto it, and start a new
-`<li class="tl-month">` when the month changes. Then add the same event as
-the first card in the homepage's "Recently at Strands of Life" strip and drop
-the last card, so it always shows the newest three.
+`timeline.html` uses the ABLE Initiatives layout: cards alternate either side
+of a spine that fills as you scroll. Copy an `<li class="timeline-entry">`,
+keep entries in date order (oldest first), and set the `.entry-ghost` month and
+day. The first entry of a new month gets `has-month` and an `.entry-month`
+chip. The last entry is flagged "Latest" automatically. Then add it as the
+first card in the homepage's "Recently at Strands of Life" strip and drop the
+last card, so the strip always shows the newest three.
 
-Photos for an entry go in `assets/images/timeline/<event>/`, 1280px on the
-long side. The first is an `<img class="tl-photo">` at the top of the card;
-any others go in a `.tl-thumbs` row under the text and open full size.
+Photos for an entry go in `assets/images/timeline/<event>/`, 1280px on the long
+side: the lead photo in `.entry-photo`, any others as `.entry-thumbs` links.
 
 ## Editing the awareness calendar
 

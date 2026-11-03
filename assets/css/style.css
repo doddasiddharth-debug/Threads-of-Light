@@ -546,25 +546,6 @@ a { color: inherit; text-decoration: none; }
   .nav-actions .btn-sm { padding: 9px 15px; }
 }
 
-/* ---------- Timeline page ---------- */
-/* One spine, a month label wherever the month changes, and a card per entry
-   in date order, oldest first, with the newest flagged "Latest". */
-.tl { list-style: none; position: relative; max-width: 820px; margin: 0 auto; padding: 0; }
-.tl::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: var(--line-strong); }
-.tl-month { position: relative; padding-left: 44px; margin: 0 0 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); }
-.tl-month::before { content: ""; position: absolute; left: 4px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--brand); }
-.tl-entry { position: relative; padding-left: 44px; margin-bottom: 24px; }
-.tl-entry::before { content: ""; position: absolute; left: 5px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--brand); }
-.tl-entry.is-latest::before { background: var(--gold); border-color: var(--gold); }
-.tl-card { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 28px; }
-.tl-entry.is-latest .tl-card { border-color: var(--brand); box-shadow: var(--shadow-md); }
-.tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 12px; }
-.tl-meta time { font-size: 14px; color: var(--muted); }
-.tl-card h3 { font-size: 21px; margin-bottom: 6px; }
-.tl-card p { font-size: 16px; margin: 0; }
-.tl-flag { position: absolute; top: -12px; right: 22px; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--gold); color: var(--brand-darkest); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-@media (max-width: 600px) { .tl-card { padding: 22px 20px; } .tl-card h3 { font-size: 19px; } }
-
 /* ---------- Recently at Strands of Life (homepage) ---------- */
 /* The ABLE Initiatives homepage strip: a heading block, then the latest three
    timeline entries split by hairlines, on the darkest indigo. */
@@ -582,19 +563,6 @@ a { color: inherit; text-decoration: none; }
   .latest-strip { grid-template-columns: 1fr; gap: 26px; }
   .latest-card { padding: 2px 0 2px 22px; }
 }
-/* An entry with photos: the lead photo runs edge to edge across the top of the
-   card, and any others sit underneath as a row of thumbnails that open full
-   size. */
-.tl-photo { display: block; width: calc(100% + 56px); max-width: none; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 30%; margin: -24px -28px 20px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-.tl-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
-.tl-thumbs a { display: block; border-radius: var(--radius-sm); overflow: hidden; }
-.tl-thumbs img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.3s ease; }
-.tl-thumbs a:hover img { transform: scale(1.04); }
-@media (max-width: 600px) {
-  .tl-photo { width: calc(100% + 40px); margin: -22px -20px 18px; }
-  .tl-thumbs { grid-template-columns: repeat(2, 1fr); }
-}
-
 /* ---------- About submenu ---------- */
 /* "About" is a <button> that opens About us / Our team, styled to match the
    links beside it. On desktop the menu is a white card under the bar; inside
@@ -624,9 +592,6 @@ a { color: inherit; text-decoration: none; }
 /* A member's bio, in their own words, printed under their role. */
 .team-bio { margin-top: 10px; }
 .team-bio p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
-/* For a mix of portrait and landscape photos: square thumbnails crop both evenly. */
-.tl-thumbs-square img { aspect-ratio: 1; }
-
 /* ---------- Photos ---------- */
 /* A photograph in a .split, in place of the old .split-media panel. */
 .split-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-photo); box-shadow: var(--shadow-md); }
@@ -666,4 +631,93 @@ a { color: inherit; text-decoration: none; }
   .bio-content { padding: 140px 24px 28px; }
   .bio-name { font-size: 23px; }
   .bio-initials { font-size: 120px; }
+}
+
+/* ---------- Timeline page ---------- */
+/* Ported from the ABLE Initiatives timeline: cards alternate either side of a
+   central spine that fills as you scroll, a chip on the spine starts each
+   month, and a large outlined ghost of each date fills the empty half
+   opposite its card. One column on narrow screens. */
+.section-timeline { position: relative; isolation: isolate; overflow: hidden; }
+.section-timeline::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(600px 460px at 8% 10%, rgba(201, 99, 107, 0.14), transparent 70%),
+    radial-gradient(560px 440px at 94% 40%, rgba(110, 99, 168, 0.13), transparent 70%),
+    radial-gradient(620px 480px at 6% 78%, rgba(201, 99, 107, 0.12), transparent 70%); }
+.timeline-rich { position: relative; max-width: 1000px; margin: 0 auto; }
+.timeline-entries { list-style: none; margin: 0; padding: 0; }
+.timeline-spine { position: absolute; left: 50%; top: 8px; bottom: 8px; width: 4px; margin-left: -2px; background: var(--line-strong); border-radius: 3px; }
+.timeline-spine::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--bg); border: 4px solid var(--line-strong); }
+/* Fully drawn by default; main.js shortens it only once it has taken over
+   (.is-live), so a failed or stale script still leaves a complete line. */
+.timeline-fill { display: block; position: relative; width: 100%; height: 100%; background: linear-gradient(to bottom, var(--brand-deep), var(--brand) 55%, var(--gold)); border-radius: 3px; }
+.timeline-rich.is-live .timeline-fill { height: 0; transition: height 0.15s linear; }
+.timeline-rich.is-live .timeline-fill::after { content: ""; position: absolute; left: 50%; bottom: -7px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(255, 211, 77, 0.28), 0 3px 10px rgba(23, 23, 86, 0.28); }
+
+.timeline-entry { position: relative; width: 50%; padding: 0 52px 64px 0; box-sizing: border-box; }
+.timeline-entry:nth-child(even) { margin-left: 50%; padding: 0 0 64px 52px; }
+.timeline-entry:last-child { padding-bottom: 0; }
+.timeline-entry.has-month { padding-top: 76px; }
+.entry-month { position: absolute; top: 8px; right: 0; transform: translateX(50%); z-index: 3; padding: 7px 18px; border-radius: var(--radius-pill); background: var(--brand); color: #fff; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; box-shadow: 0 2px 10px rgba(23, 23, 86, 0.22); }
+.timeline-entry:nth-child(even) .entry-month { right: auto; left: 0; transform: translateX(-50%); }
+.entry-marker { position: absolute; top: 28px; right: -11px; width: 22px; height: 22px; border-radius: 50%; background: var(--paper); border: 4px solid var(--line-strong); z-index: 2; transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease; }
+.timeline-entry.has-month .entry-marker { top: 104px; }
+.timeline-entry:nth-child(even) .entry-marker { right: auto; left: -11px; }
+/* Markers and card edges take the month's tone once the line reaches them. */
+.timeline-entry.is-reached .entry-marker { border-color: var(--brand); box-shadow: 0 0 0 7px var(--accent-tint); transform: scale(1.18); }
+.timeline-entry.rose.is-reached .entry-marker { border-color: var(--rose); box-shadow: 0 0 0 7px var(--rose-tint); }
+.timeline-entry.rose.is-reached .entry-card { border-color: var(--rose); }
+
+.entry-card { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-photo); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.35s ease; }
+/* Keyed off :last-child, so the flag moves on its own when an entry is added. */
+.timeline-entry:last-child .entry-card::after { content: "Latest"; position: absolute; top: 14px; right: 14px; z-index: 2; padding: 5px 13px; border-radius: var(--radius-pill); background: var(--gold); color: var(--brand-darkest); font-family: var(--font-display); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.entry-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.entry-photo { position: relative; aspect-ratio: 16 / 9; background: var(--bg-alt); border-bottom: 1px solid var(--line); overflow: hidden; }
+.entry-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.entry-card:hover .entry-photo img { transform: scale(1.04); }
+/* A milestone with no photo: the mark on white is the picture. */
+.entry-photo-logo { background: #fff; }
+.entry-photo-logo img { object-fit: contain; padding: 22px; }
+.entry-card:hover .entry-photo-logo img { transform: none; }
+.entry-body { padding: 22px 24px 24px; }
+.entry-meta { display: flex; align-items: center; gap: 10px 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.entry-date { font-family: var(--font-display); font-size: 13.5px; font-weight: 600; color: var(--muted); }
+.entry-body h3 { font-size: 21px; margin-bottom: 8px; }
+.entry-body p { font-size: 15.5px; margin-bottom: 0; }
+/* The rest of an event's photos, as thumbnails that open full size. */
+.entry-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
+.entry-thumbs a { display: block; border-radius: var(--radius-sm); overflow: hidden; }
+.entry-thumbs img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; transition: transform 0.3s ease; }
+.entry-thumbs a:hover img { transform: scale(1.05); }
+
+/* Entries slide in from their own side (overrides the plain .reveal rise). */
+.timeline-entry.reveal { transform: translateX(-28px); }
+.timeline-entry:nth-child(even).reveal { transform: translateX(28px); }
+.timeline-entry.reveal.in-view { transform: translateX(0); }
+
+.entry-ghost { position: absolute; top: 6px; left: 100%; width: 100%; padding-left: 56px; z-index: 0; font-family: var(--font-display); font-weight: 800; line-height: 0.8; letter-spacing: -0.05em; color: transparent; -webkit-text-stroke: 2px var(--line-strong); opacity: 0.85; user-select: none; pointer-events: none; transition: -webkit-text-stroke-color 0.5s ease, opacity 0.5s ease; }
+.entry-ghost .g-month { display: block; font-size: clamp(20px, 2.1vw, 28px); letter-spacing: 0.2em; text-transform: uppercase; -webkit-text-stroke-width: 1.2px; margin-bottom: 8px; }
+.entry-ghost .g-day { display: block; font-size: clamp(88px, 11vw, 148px); }
+.timeline-entry.has-month .entry-ghost { top: 82px; }
+.timeline-entry:nth-child(even) .entry-ghost { left: auto; right: 100%; padding: 0 56px 0 0; text-align: right; }
+.timeline-entry.rose.is-reached .entry-ghost { -webkit-text-stroke-color: var(--rose); opacity: 0.45; }
+@supports not ((-webkit-text-stroke: 1px red) or (text-stroke: 1px red)) { .entry-ghost { display: none; } }
+
+@media (max-width: 860px) {
+  .timeline-spine { left: 10px; margin-left: 0; }
+  .timeline-entry, .timeline-entry:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 40px 46px; }
+  .timeline-entry .entry-marker, .timeline-entry:nth-child(even) .entry-marker { left: 0; right: auto; }
+  .timeline-entry.has-month { padding-top: 58px; }
+  .timeline-entry .entry-month, .timeline-entry:nth-child(even) .entry-month { left: 46px; right: auto; top: 0; transform: none; }
+  .timeline-entry.has-month .entry-marker { top: 86px; }
+  .timeline-entry.reveal, .timeline-entry:nth-child(even).reveal { transform: translateY(16px); }
+  .timeline-entry.reveal.in-view { transform: none; }
+  .entry-ghost { display: none; }
+}
+@media (max-width: 480px) { .entry-thumbs { gap: 6px; } }
+@media (prefers-reduced-motion: reduce) {
+  .timeline-rich .timeline-fill, .timeline-rich.is-live .timeline-fill { height: 100%; transition: none; }
+  .timeline-rich.is-live .timeline-fill::after { display: none; }
+  .timeline-entry.reveal, .timeline-entry:nth-child(even).reveal { transform: none; }
+  .entry-card:hover, .entry-card:hover .entry-photo img { transform: none; }
 }

@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#3434AA">
-<link rel="stylesheet" href="assets/css/style.css?v=15">
+<link rel="stylesheet" href="assets/css/style.css?v=18">
 </head>
 <body>
 
@@ -57,53 +57,103 @@
     </div>
   </section>
 
-  <section class="section-tight">
+  <section class="section-tight section-timeline">
     <div class="container">
-      <ol class="tl">
-        <li class="tl-month">October 2026</li>
-        <li class="tl-entry reveal" id="breast-cancer-lesson">
-          <article class="tl-card">
-            
-            <div class="tl-meta"><span class="pill pill-rose">Breast Cancer Awareness Month</span><time datetime="2026-10-07">October 7, 2026</time></div>
-            <h3>Learning about breast cancer</h3>
-            <p>To open Breast Cancer Awareness Month, we taught our club members about breast cancer.</p>
-          </article>
-        </li>
-        <li class="tl-entry reveal" id="awareness-posters">
-          <article class="tl-card">
-            <img class="tl-photo" src="assets/images/timeline/posters/1.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Club members line up holding the breast cancer awareness posters they made">
-            
-            <div class="tl-meta"><span class="pill pill-rose">Breast Cancer Awareness Month</span><time datetime="2026-10-14">October 14, 2026</time></div>
-            <h3>Making awareness posters</h3>
-            <p>Club members made posters to spread breast cancer awareness.</p>
-            <div class="tl-thumbs">
-              <a href="assets/images/timeline/posters/2.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/2.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Two club members hold a poster reading Breast Cancer Awareness with a pink ribbon"></a>
-              <a href="assets/images/timeline/posters/3.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/3.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="A club member holds a hand-lettered Breast Cancer Awareness Month poster"></a>
-              <a href="assets/images/timeline/posters/4.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/4.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="A club member holds a pink-striped poster reading October is Breast Cancer Awareness Month"></a>
-              <a href="assets/images/timeline/posters/5.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/5.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Two club members hold a poster reading No One Fights Alone"></a>
+      <!-- Alternating cards either side of a spine that fills as you scroll,
+           ported from the ABLE Initiatives timeline. Entries go in date order,
+           oldest first; the last one is flagged "Latest" automatically. The
+           first entry of each month carries an .entry-month chip and the
+           .has-month class. -->
+      <div class="timeline-rich" data-timeline>
+        <div class="timeline-spine" aria-hidden="true"><span class="timeline-fill"></span></div>
+        <ol class="timeline-entries">
+        <li class="timeline-entry rose has-month reveal" id="breast-cancer-lesson">
+          <span class="entry-ghost" aria-hidden="true"><span class="g-month">Oct</span><span class="g-day">7</span></span>
+          <div class="entry-month">October 2026</div>
+          <div class="entry-marker" aria-hidden="true"></div>
+          <article class="entry-card">
+            <div class="entry-photo entry-photo-logo">
+              <img src="assets/images/logo.png" width="701" height="700" loading="lazy" decoding="async" alt="The Strands of Life logo">
+            </div>
+            <div class="entry-body">
+              <div class="entry-meta">
+                <span class="pill pill-rose">Breast Cancer Awareness Month</span>
+                <time class="entry-date" datetime="2026-10-07">October 7, 2026</time>
+              </div>
+              <h3>Learning about breast cancer</h3>
+              <p>To open Breast Cancer Awareness Month, we taught our club members about breast cancer.</p>
             </div>
           </article>
         </li>
-        <li class="tl-entry reveal is-latest" id="care-packages">
-          <article class="tl-card">
-            <span class="tl-flag">Latest</span>
-            <img class="tl-photo" src="assets/images/timeline/care-packages/1.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Four Strands of Life members at the UCHealth breast surgery clinic, where they donated their care packages">
-            <div class="tl-meta"><span class="pill pill-rose">Breast Cancer Awareness Month</span><time datetime="2026-10-30">October 30, 2026</time></div>
-            <h3>Care packages for the UCHealth High-Risk Breast Cancer Clinic</h3>
-            <p>We made care packages with handwritten notes for patients at the UCHealth High-Risk Breast Cancer Clinic, then took them to the clinic and donated them in person.</p>
-            <div class="tl-thumbs tl-thumbs-square">
-              <a href="assets/images/timeline/care-packages/2.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/2.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Club members around a table covered in tissue paper and care-package supplies"></a>
-              <a href="assets/images/timeline/care-packages/3.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/3.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Two club members writing notes for the care packages"></a>
-              <a href="assets/images/timeline/care-packages/4.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/4.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="A club member writes a note to go in a care package"></a>
-              <a href="assets/images/timeline/care-packages/5.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/5.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Club members fill a row of pink gift bags"></a>
-              <a href="assets/images/timeline/care-packages/6.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/6.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Finished pink gift bags lined up along the table"></a>
-              <a href="assets/images/timeline/care-packages/7.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/7.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Handwritten notes reading Have a great day and Sending you warm strength and comfort"></a>
-              <a href="assets/images/timeline/care-packages/8.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/8.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Pink gift bags packed with tissue paper, ready to go"></a>
-              <a href="assets/images/timeline/care-packages/9.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/9.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="The finished care packages bagged up to take to the clinic"></a>
+        <li class="timeline-entry rose reveal" id="awareness-posters">
+          <span class="entry-ghost" aria-hidden="true"><span class="g-month">Oct</span><span class="g-day">21</span></span>
+          <div class="entry-marker" aria-hidden="true"></div>
+          <article class="entry-card">
+            <div class="entry-photo">
+              <img src="assets/images/timeline/posters/1.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Club members line up holding the breast cancer awareness posters they made" style="object-position:center 40%;">
+            </div>
+            <div class="entry-body">
+              <div class="entry-meta">
+                <span class="pill pill-rose">Breast Cancer Awareness Month</span>
+                <time class="entry-date" datetime="2026-10-21">October 21, 2026</time>
+              </div>
+              <h3>Making awareness posters</h3>
+              <p>Club members made posters to spread breast cancer awareness.</p>
+              <div class="entry-thumbs">
+                <a href="assets/images/timeline/posters/2.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/2.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Two club members hold a poster reading Breast Cancer Awareness with a pink ribbon"></a>
+                <a href="assets/images/timeline/posters/3.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/3.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="A club member holds a hand-lettered Breast Cancer Awareness Month poster"></a>
+                <a href="assets/images/timeline/posters/4.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/4.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="A club member holds a pink-striped poster reading October is Breast Cancer Awareness Month"></a>
+                <a href="assets/images/timeline/posters/5.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/posters/5.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Two club members hold a poster reading No One Fights Alone"></a>
+              </div>
             </div>
           </article>
         </li>
-      </ol>
+        <li class="timeline-entry rose reveal" id="care-packages">
+          <span class="entry-ghost" aria-hidden="true"><span class="g-month">Oct</span><span class="g-day">30</span></span>
+          <div class="entry-marker" aria-hidden="true"></div>
+          <article class="entry-card">
+            <div class="entry-photo">
+              <img src="assets/images/timeline/care-packages/2.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Club members around a table covered in tissue paper and care-package supplies" style="object-position:center;">
+            </div>
+            <div class="entry-body">
+              <div class="entry-meta">
+                <span class="pill pill-rose">Breast Cancer Awareness Month</span>
+                <time class="entry-date" datetime="2026-10-30">October 30, 2026</time>
+              </div>
+              <h3>Making care packages</h3>
+              <p>We made care packages with handwritten notes for patients at the UCHealth High-Risk Breast Cancer Clinic.</p>
+              <div class="entry-thumbs">
+                <a href="assets/images/timeline/care-packages/3.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/3.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Two club members writing notes for the care packages"></a>
+                <a href="assets/images/timeline/care-packages/4.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/4.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="A club member writes a note to go in a care package"></a>
+                <a href="assets/images/timeline/care-packages/5.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/5.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Club members fill a row of pink gift bags"></a>
+                <a href="assets/images/timeline/care-packages/6.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/6.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Finished pink gift bags lined up along the table"></a>
+                <a href="assets/images/timeline/care-packages/7.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/7.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Handwritten notes reading Have a great day and Sending you warm strength and comfort"></a>
+                <a href="assets/images/timeline/care-packages/8.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/8.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Pink gift bags packed with tissue paper, ready to go"></a>
+                <a href="assets/images/timeline/care-packages/9.jpg" target="_blank" rel="noopener"><img src="assets/images/timeline/care-packages/9.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="The finished care packages bagged up to take to the clinic"></a>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="timeline-entry rose has-month reveal" id="care-package-delivery">
+          <span class="entry-ghost" aria-hidden="true"><span class="g-month">Nov</span><span class="g-day">2</span></span>
+          <div class="entry-month">November 2026</div>
+          <div class="entry-marker" aria-hidden="true"></div>
+          <article class="entry-card">
+            <div class="entry-photo">
+              <img src="assets/images/timeline/care-packages/1.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Four Strands of Life members at the UCHealth breast surgery clinic, where they donated their care packages" style="object-position:center 30%;">
+            </div>
+            <div class="entry-body">
+              <div class="entry-meta">
+                <span class="pill pill-rose">Breast Cancer Awareness Month</span>
+                <time class="entry-date" datetime="2026-11-02">November 2, 2026</time>
+              </div>
+              <h3>Delivering care packages to the UCHealth High-Risk Breast Cancer Clinic</h3>
+              <p>We took our care packages to the UCHealth High-Risk Breast Cancer Clinic and donated them in person.</p>
+            </div>
+          </article>
+        </li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -166,7 +216,7 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=5" defer></script>
+<script src="assets/js/main.js?v=6" defer></script>
 <script src="assets/js/analytics.js?v=2" defer></script>
 </body>
 </html>

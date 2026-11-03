@@ -226,6 +226,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Timeline spine: the line fills as you scroll and each entry lights up as
+  // the fill reaches its marker, as on the ABLE Initiatives timeline. The CSS
+  // default is a fully drawn line, shortened only once this sets `.is-live`.
+  const reduceTimeline = window.matchMedia("(prefers-reduced-motion: reduce)");
+  document.querySelectorAll("[data-timeline]").forEach((timeline) => {
+    const fill = timeline.querySelector(".timeline-fill");
+    const entries = Array.from(timeline.querySelectorAll(".timeline-entry"));
+    if (!fill) return;
+    if (reduceTimeline.matches) {
+      entries.forEach((el) => el.classList.add("is-reached"));
+      return;
+    }
+    timeline.classList.add("is-live");
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const rect = timeline.getBoundingClientRect();
+      const ratio = (window.innerHeight * 0.55 - rect.top) / rect.height;
+      const clamped = Math.max(0, Math.min(1, ratio));
+      fill.style.height = clamped * 100 + "%";
+      const filledTo = rect.top + rect.height * clamped;
+      entries.forEach((el) => {
+        const marker = el.querySelector(".entry-marker") || el;
+        const mid = marker.getBoundingClientRect().top + marker.offsetHeight / 2;
+        el.classList.toggle("is-reached", filledTo >= mid);
+      });
+    };
+    const queue = () => {
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    update();
+    // If rAF never runs (a backgrounded tab), don't leave the line at zero.
+    setTimeout(() => {
+      if (!fill.style.height || fill.style.height === "0%") update();
+    }, 1200);
+  });
+
   // Mark the nav link matching the current page.
   const page = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((link) => {
