@@ -87,11 +87,11 @@ mosaic (`.stat-mosaic`, three tiles); the four steps; the featured stories
 (placeholders, with their notice); and the three tilted action cards
 (`.action-section`).
 
-**No photographs yet.** The design leans on photography of real people, and
-the site has none. Every place a photo belongs is built to take one: add an
-`<img>` as the first child of a `.stat-tile` or `.action-card` and the overlay
-handles it; swap `.split-media` for an `<img>`; give a `.story-thumb` a
-background image. Until then the mark and the month tones fill those slots.
+**Photographs.** Club photos live in `assets/images/timeline/<event>/` and are
+reused around the site: behind the homepage number tiles and action cards
+(decorative, `alt=""`, tinted by the overlay), as the homepage photo break,
+as `.split-photo` on About and Get Involved, and on the timeline. Team
+headshots are in `assets/images/team/`, 480px wide.
 
 **Cache-busting.** GitHub Pages serves CSS and JS with a ten-minute cache, so
 `style.css` and `main.js` are linked with `?v=N` on every page. Bump N on every

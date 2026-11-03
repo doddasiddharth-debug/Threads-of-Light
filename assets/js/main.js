@@ -150,6 +150,82 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Team bios, as on the ABLE Initiatives team page: clicking a member's photo
+  // opens their bio over an enlarged copy of it. The bio text lives in the
+  // card, so without JS or <dialog> support it simply prints there; a card
+  // hides it only once it has been wired (`.bio-live`).
+  const bioCards = Array.from(document.querySelectorAll(".team-bio"), (bio) => bio.closest(".team-card")).filter(Boolean);
+  const dialogSupported =
+    typeof HTMLDialogElement === "function" &&
+    typeof HTMLDialogElement.prototype.showModal === "function";
+  if (bioCards.length && dialogSupported) {
+    const dialog = document.createElement("dialog");
+    dialog.className = "bio-dialog";
+    dialog.setAttribute("aria-labelledby", "bio-dialog-name");
+    dialog.innerHTML =
+      '<div class="bio-panel">' +
+      '<button type="button" class="bio-close" aria-label="Close bio">&times;</button>' +
+      '<div class="bio-media"></div>' +
+      '<div class="bio-content">' +
+      '<h2 class="bio-name" id="bio-dialog-name"></h2>' +
+      '<p class="bio-role"></p>' +
+      '<div class="bio-text"></div>' +
+      "</div>" +
+      "</div>";
+    const panel = dialog.querySelector(".bio-panel");
+    const media = dialog.querySelector(".bio-media");
+    const nameEl = dialog.querySelector(".bio-name");
+    const roleEl = dialog.querySelector(".bio-role");
+    const textEl = dialog.querySelector(".bio-text");
+    document.body.appendChild(dialog);
+
+    const open = (card) => {
+      const role = card.querySelector(".team-role");
+      const photo = card.querySelector(".avatar img");
+      const initials = card.querySelector(".avatar-initials");
+      nameEl.textContent = card.querySelector(".team-name").textContent.trim();
+      roleEl.textContent = role ? role.textContent.trim() : "";
+      roleEl.hidden = !roleEl.textContent;
+      textEl.replaceChildren(...Array.from(card.querySelector(".team-bio").cloneNode(true).childNodes));
+      media.replaceChildren();
+      if (photo && !(photo.complete && photo.naturalWidth === 0)) {
+        const img = document.createElement("img");
+        img.className = "bio-photo";
+        img.src = photo.currentSrc || photo.src;
+        img.alt = "";
+        media.appendChild(img);
+      } else if (initials) {
+        const mark = document.createElement("span");
+        mark.className = "bio-initials";
+        mark.setAttribute("aria-hidden", "true");
+        mark.textContent = initials.textContent.trim();
+        media.appendChild(mark);
+      }
+      panel.classList.toggle("no-art", !media.firstChild);
+      dialog.showModal();
+    };
+
+    bioCards.forEach((card) => {
+      const avatar = card.querySelector(".avatar");
+      const name = card.querySelector(".team-name");
+      if (!avatar || !name) return;
+      const trigger = document.createElement("button");
+      trigger.type = "button";
+      trigger.className = "bio-trigger";
+      trigger.setAttribute("aria-haspopup", "dialog");
+      trigger.setAttribute("aria-label", "Read " + name.textContent.trim() + "'s bio");
+      avatar.parentNode.insertBefore(trigger, avatar);
+      trigger.appendChild(avatar);
+      trigger.addEventListener("click", () => open(card));
+      card.classList.add("bio-live");
+    });
+
+    dialog.querySelector(".bio-close").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  }
+
   // Mark the nav link matching the current page.
   const page = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((link) => {

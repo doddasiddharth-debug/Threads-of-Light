@@ -624,3 +624,46 @@ a { color: inherit; text-decoration: none; }
 /* A member's bio, in their own words, printed under their role. */
 .team-bio { margin-top: 10px; }
 .team-bio p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+/* For a mix of portrait and landscape photos: square thumbnails crop both evenly. */
+.tl-thumbs-square img { aspect-ratio: 1; }
+
+/* ---------- Photos ---------- */
+/* A photograph in a .split, in place of the old .split-media panel. */
+.split-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-photo); box-shadow: var(--shadow-md); }
+/* Homepage photo break: one full-bleed photograph, nothing written on it. */
+.photo-break { margin: 0; }
+.photo-break img { display: block; width: 100%; height: clamp(260px, 42vw, 560px); object-fit: cover; object-position: center 35%; }
+
+/* ---------- Team bios (click the photo) ---------- */
+/* Ported from the ABLE Initiatives team page. main.js wraps each photo that
+   has a bio in a .bio-trigger button and hides the printed bio. */
+.team-card.bio-live .team-bio { display: none; }
+.bio-trigger { display: block; width: 100%; padding: 0; border: none; background: none; font: inherit; color: inherit; text-align: inherit; cursor: pointer; }
+.bio-trigger .avatar::after { content: "Read bio"; position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 8px 10px; background: linear-gradient(to top, rgba(23, 23, 86, 0.9), rgba(23, 23, 86, 0)); color: #fff; font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0; text-align: center; opacity: 0; transition: opacity 0.18s ease; }
+.bio-trigger:hover .avatar::after, .bio-trigger:focus-visible .avatar::after { opacity: 1; }
+.bio-trigger .avatar img { transition: transform 0.3s ease; }
+.bio-trigger:hover .avatar img { transform: scale(1.04); }
+@media (hover: none) { .bio-trigger .avatar::after { opacity: 1; } }
+
+.bio-dialog { width: 100%; max-width: min(460px, calc(100vw - 32px)); max-height: 94vh; padding: 0; border: none; background: transparent; overflow: visible; }
+.bio-dialog::backdrop { background: rgba(23, 23, 86, 0.62); }
+/* The panel's colour is what the photo fades into, so it matches the
+   gradient's end stop on .bio-content. */
+.bio-panel { position: relative; overflow: hidden; border-radius: var(--radius-lg); background: var(--brand-darkest); box-shadow: 0 24px 60px rgba(23, 23, 86, 0.45); max-height: 94vh; overflow-y: auto; }
+.bio-media { display: block; font-size: 0; }
+.bio-photo { display: block; width: 100%; height: auto; max-height: 62vh; object-fit: contain; }
+.bio-initials { display: flex; aspect-ratio: 1; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 150px; font-weight: 700; line-height: 1; color: rgba(255, 255, 255, 0.16); }
+.bio-content { position: relative; margin-top: -210px; padding: 150px 34px 34px; background: linear-gradient(to bottom, rgba(23, 23, 86, 0) 0px, rgba(23, 23, 86, 0.5) 62px, rgba(23, 23, 86, 0.88) 112px, #171756 150px); }
+.bio-panel.no-art .bio-content { margin-top: 0; padding-top: 38px; background: none; }
+.bio-name { color: var(--gold); font-size: 27px; margin: 0 0 4px; }
+.bio-role { color: rgba(255, 255, 255, 0.85); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 18px; }
+.bio-text { color: rgba(255, 255, 255, 0.9); font-size: 15.5px; line-height: 1.7; }
+.bio-text p { margin: 0 0 0.9em; color: inherit; font-size: inherit; line-height: inherit; }
+.bio-text p:last-child { margin-bottom: 0; }
+.bio-close { position: absolute; top: 14px; right: 14px; z-index: 2; width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(23, 23, 86, 0.6); color: #fff; font-size: 19px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s ease; }
+.bio-close:hover { background: rgba(23, 23, 86, 0.85); }
+@media (max-width: 560px) {
+  .bio-content { padding: 140px 24px 28px; }
+  .bio-name { font-size: 23px; }
+  .bio-initials { font-size: 120px; }
+}
